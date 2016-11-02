@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+    <link rel="prerender" href="prerender-test.html">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrepVolumes - Quick Search Volume Retrieval tool from iPullRank</title>
+    <meta name="description" content="Tired of Google taking away your search data? Get your search volumes here!">
+</head>
+
+<body class="grey lighten-4">
+    <header>
+        <!-- <nav class="indigo accent-2">
+          <div class="container">
+           <div class="nav-wrapper">
+             <a href="#!" class="brand-logo"><i class="material-icons">library_books</i>GrepVolumes</a>
+             <ul class="right hide-on-med-and-down">
+               <li><a href="."><i class="material-icons">refresh</i></a></li>
+             </ul>
+           </div>
+         </div>
+         </nav> -->
+        <div class="header-main indigo accent-2">
+          <div class="container">
+            <div class="branding right-align">
+              <p class="white-text">Grep<span>Volumes</span></p>
+            </div>
+            <form class="col s12">
+                <div class="row">
+                  <div class="col s5" style="position:relative">
+                    <div class="input-field white-text">
+                        <textarea id="keywords" class="materialize-textarea" placeholder="Enter Keywords Here" rows="1"></textarea>
+                    </div>
+                    <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:0px;">Line-separated</p>
+                  </div>
+                  <div class="col s2" style="padding-top: 1.6rem;">
+                  <div class="input-field location">
+                          <select id="loc">
+                              <option value="" selected>United States</option>
+                              <option value="argentina">Argentina</option>
+                              <option value="australia">Australia</option>
+                              <option value="brazil">Brazil</option>
+                              <option value="bulgaria">Bulgaria</option>
+                              <option value="canada">Canada</option>
+                              <option value="china_simplified">China (Simplified)</option>
+                              <option value="china_traditional">China (Traditional)</option>
+                              <option value="denmark">Denmark</option>
+                              <option value="finland">Finland</option>
+                              <option value="france">France</option>
+                              <option value="germany">Germany</option>
+                              <option value="greece">Greece</option>
+                              <option value="hungary">Hungary</option>
+                              <option value="india">India</option>
+                              <option value="ireland">Ireland</option>
+                              <option value="israel">Israel</option>
+                              <option value="italy">Italy</option>
+                              <option value="japan">Japan</option>
+                              <option value="mexico">Mexico</option>
+                              <option value="netherlands">Netherlands</option>
+                              <option value="newzealand">New Zealand</option>
+                              <option value="norway">Norway</option>
+                              <option value="poland">Poland</option>
+                              <option value="portugal">Portugal</option>
+                              <option value="romania">Romania</option>
+                              <option value="russia">Russia</option>
+                              <option value="south_africa">South Africa</option>
+                              <option value="south_korea">South Korea</option>
+                              <option value="spain">Spain</option>
+                              <option value="sweden">Sweden</option>
+                              <option value="turkey">Turkey</option>
+                              <option value="united_kingdom">United Kingdom</option>
+                          </select>
+                          <label for="loc">Location</label>
+                  </div>
+                </div>
+                <div class="col s2" style="padding-top: 2.6rem;">
+                  <input placeholder="API Key Here" id="apikey" type="text" class="validate">
+                </div>
+                <div class="col s3" style="padding-top: 3.3rem;">
+                    <div class="right-align">
+                        <button id="getSvButton" class="btn waves-effect waves-light yellow darken-2" type="submit" name="action">Get Search Volume
+                            <i class="material-icons right">send</i>
+                        </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+          <div class="result">
+            <!-- <h4>Keyword Data Results:</h4> -->
+            <table id="kwData">
+                <thead>
+                    <tr>
+                        <th data-field="id">Keyword</th>
+                        <th data-field="name">Local Monthly Search Volume</th>
+                        <th data-field="country">Country</th>
+                        <th data-field="cpc">CPC</th>
+                        <th data-field="price">Month 1</th>
+                        <th data-field="price">Month 2</th>
+                        <th data-field="price">Month 3</th>
+                        <th data-field="price">Month 4</th>
+                        <th data-field="price">Month 5</th>
+                        <th data-field="price">Month 6</th>
+                        <th data-field="price">Month 7</th>
+                        <th data-field="price">Month 8</th>
+                        <th data-field="price">Month 9</th>
+                        <th data-field="price">Month 10</th>
+                        <th data-field="price">Month 11</th>
+                        <th data-field="price">Month 12</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+            </table>
+          </div>
+        </div>
+    </main>
+    <footer class="page-footer grey lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="grey-text text-darken-1">Grep Volumes</h5>
+                    <p class="grey-text" style="font-weight:300;">A simple tool to pull search volumes from the GrepWords API. Brought to you by the good folks at iPullRank.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="grey-text text-darken-1">Links</h5>
+                    <ul style="font-weight:300;">
+                        <li><a class="grey-text" href="http://ipullrank.com">iPullRank</a></li>
+                        <li><a class="grey-text" href="http://ipullrank.com/blog">iPullRank Blog</a></li>
+                        <li><a class="grey-text" href="http://twitter.com/ipullrank">iPullRank Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container grey-text">
+                GPL v2 license or something.
+
+            </div>
+        </div>
+    </footer>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <!-- <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/dataTables.scrollingPagination.js"></script> -->
+
+
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+
+        $('#keywords').trigger('autoresize');
+        $('#kwData').DataTable({
+            select: true,
+            dom: 'Bfrtip',
+            buttons: ['copyHtml5', {
+                extend: 'excelHtml5',
+                title: 'GrepVolume Export'
+            }, {
+                extend: 'csvHtml5',
+                title: 'GrepVolume Export'
+            }, {
+                extend: 'pdfHtml5',
+                title: 'GrepVolume Export'
+            }],
+            language:{
+               sSearch: " _INPUT_",
+               searchPlaceholder: "Search..."
+            }
+        });
+
+        $('#getSvButton').click(function(e) {
+            e.preventDefault();
+            //console.log($('#keywords').val());
+            $.ajax({
+                url: 'sv-ajax.php',
+                data: {
+                    "keywords": $('#keywords').val(),
+                    "loc" : $('#loc').val(),
+                    "apikey" : $('#apikey').val()
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(result) {
+                    $('#keywords').val('');
+                    $('#keywords').trigger('autoresize');
+
+                    var t = $('#kwData').DataTable();
+                    console.log(t);
+                    //console.log(result.keywords);
+                    if ((typeof(result.keywords.length) != 'undefined')) {
+                        for (i = 0; i < result.keywords.length; i++) {
+                            //$('#kwData tr:last').after('<tr><td>'+result.keywords[i].keyword+'</td><td>'+result.keywords[i].searchvolume+'</td><td>'+result.keywords[i].cpc+'</td></tr>');
+                            t.row.add([result.keywords[i].keyword, result.keywords[i].searchvolume, result.keywords[i].country, result.keywords[i].cpc, result.keywords[i].m1,
+                                result.keywords[i].m2, result.keywords[i].m3, result.keywords[i].m4, result.keywords[i].m5, result.keywords[i].m6,
+                                result.keywords[i].m7, result.keywords[i].m8, result.keywords[i].m9, result.keywords[i].m10, result.keywords[i].m11,
+                                result.keywords[i].m12
+                            ]).draw(false);
+                        }
+                    } else {
+                        $('#kwData tr:last').after('<tr><td>' + result.keywords.keyword + '</td><td>' + result.keywords.searchvolume + '</td><td>' + result.keywords.cpc + '</td></tr>');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
